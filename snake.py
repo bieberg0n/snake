@@ -55,7 +55,9 @@ char = 'd'						# 开局方向
 char_d = {'a':'d','w':'s','d':'a','s':'w'} # 对应逆方向字典
 char_no = 'a'							   # 开局逆方向
 eat = 1									   # 苹果被吃掉时为1
-threading.Thread(target=getchar).start()
+t = threading.Thread(target=getchar)
+t.setDaemon(True)
+t.start()
 while 1:
 	if eat:						# 苹果被吃掉，生成新苹果
 		apple = getapple(snake)
